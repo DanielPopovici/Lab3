@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.SyncStateContract.Constants;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class PhoneDialerActivity extends Activity {
@@ -183,6 +185,23 @@ public class PhoneDialerActivity extends Activity {
 				Intent intent = new Intent(Intent.ACTION_CALL);
 				intent.setData(Uri.parse("tel: "+text.getText()));
 				startActivity(intent);
+			}
+		});
+        
+        Button cmanager = (Button)findViewById(R.id.buttonContactsManager);
+        
+        cmanager.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				
+				if (text.length() > 0) {
+				  Intent intent = new Intent("ro.pub.cs.systems.pdsd.lab04.ContactsManagerActivity");
+				  intent.putExtra("ro.pub.cs.systems.pdsd.lab04.contactsmanager.PHONE_NUMBER_KEY", text.getText().toString());
+				  startActivityForResult(intent, 80085);
+				} else {
+				  Toast.makeText(getApplication(), "Introduceti numarul de telefon", Toast.LENGTH_LONG).show();
+				}
 			}
 		});
     }

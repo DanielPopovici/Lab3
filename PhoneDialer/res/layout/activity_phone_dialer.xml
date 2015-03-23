@@ -127,6 +127,14 @@
                 android:layout_row="6"
                 android:text="0" />
 
+            <Button
+                android:id="@+id/buttonContactsManager"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_column="2"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_row="0"
+                android:text="Contacts Manager" />
+
         </GridLayout>
 
     </LinearLayout>
